@@ -1,11 +1,11 @@
-import express from "express";
-import bodyParser from "body-parser";
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
 import axios from "axios";
 const app=express();
-const port=5000;
-
-app.use(express.static("public"));
+const port = process.env.PORT || 5000;
 app.use(bodyParser.json())
+app.use(cors());
 let URL="https://v2.jokeapi.dev/joke/";
 
 
@@ -38,4 +38,4 @@ app.get("/api/login",async(req,res)=>{
 } )
 
 
-app.listen(5000,()=>{console.log(`running on port ${port}`)})
+app.listen(port,()=>{console.log(`running on port ${port}`)})
